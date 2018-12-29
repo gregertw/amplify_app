@@ -1,6 +1,6 @@
 import React from 'react';
 import { Linking, Button, StyleSheet, Text, View, Platform } from 'react-native';
-
+import { withAuthenticator } from 'aws-amplify-react-native';
 import Auth from '@aws-amplify/auth';
 import Analytics from '@aws-amplify/analytics';
 
@@ -18,7 +18,7 @@ const instructions = Platform.select({
         'Shake or press menu button for dev menu',
 });
 
-export default class App extends React.Component {
+export default withAuthenticator(class App extends React.Component {
     constructor(props) {
         super(props);
         this.handleAnalyticsClick = this.handleAnalyticsClick.bind(this);
@@ -55,7 +55,7 @@ export default class App extends React.Component {
         </View>
     );
   }
-}
+});
 
 const styles = StyleSheet.create({
     container: {
